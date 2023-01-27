@@ -1,4 +1,5 @@
 const User = require("../Models/User.js");
+const CryptoJS = require("crypto-js");
 const register=async (req, res) => {
     const otp = Math.floor(Math.floor(100000 + Math.random() * 900000));
    const existingUser = await User.findOne({ email: req.body.email });
@@ -9,14 +10,14 @@ const register=async (req, res) => {
      name: req.body.name,
      email: req.body.email,
      phone:req.body.phone,
-     otp:req.body.otp,
+     otp:otp,
      role:req.body.role,
      password: CryptoJS.AES.encrypt(
        req.body.password,
        process.env.SECRET_KEY
      ).toString(),
      isBusiness: req.body.isBusiness,
-     otp:req.body.otp
+     country:req.body.country
    });
    try {
      const user = await newUser.save();

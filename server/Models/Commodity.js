@@ -3,7 +3,7 @@ const commoditySchema = new mongoose.Schema(
   {
     comodityName:{type:String,required:true},
     volume:{type:Number,required:true},
-    category:{type:Number,required:true},
+    category:{type:String,required:true},
   },
   { timestamps: true }
 );

@@ -1,4 +1,6 @@
 const User = require("../Models/User.js");
+const CryptoJS = require("crypto-js");
+const jwt = require("jsonwebtoken");
 const login=async (req, res) => {
     try {
       const user = await User.findOne({ email: req.body.email });
