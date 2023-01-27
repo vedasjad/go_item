@@ -14,8 +14,9 @@ const UserSchema = new mongoose.Schema(
         message: "Provided phone number is invalid.",
       },
     },
+    country:{type: String, required: true},
     password: { type: String, required: true },
-    isAdmin: { type: Boolean, default: false },
+    isBusiness: { type: Boolean, default: false },
     email: {
       type: String,
       required: true,
@@ -27,13 +28,7 @@ const UserSchema = new mongoose.Schema(
         message: "Provided email is invalid.",
       },
     },
-    otp: {
-      type: String,
-    },
-    role: {
-      type: String,
-      required: true,
-    },
+    otp:{type:String,required:true}
   },
   { timestamps: true }
 );

@@ -1,3 +1,4 @@
+const User = require("../Models/User.js");
 const verifyemail=async (req, res) => {
     try {
       const otp = req.body.otp;

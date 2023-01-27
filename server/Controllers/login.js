@@ -1,6 +1,6 @@
+const User = require("../Models/User.js");
 const login=async (req, res) => {
     try {
-      const a=0;
       const user = await User.findOne({ email: req.body.email });
       console.log(user);
       if(!user) return res.status(400).json("Email not found!");
@@ -12,7 +12,7 @@ const login=async (req, res) => {
         name: user.name,
         email: user.email,
         phone: user.phone,
-        isAdmin: user.isAdmin,
+        isBusiness: user.isBusiness,
         id: user.id,
       };
       const accessToken = jwt.sign(

@@ -1,3 +1,4 @@
+const User = require("../Models/User.js");
 const register=async (req, res) => {
     const otp = Math.floor(Math.floor(100000 + Math.random() * 900000));
    const existingUser = await User.findOne({ email: req.body.email });
@@ -14,7 +15,8 @@ const register=async (req, res) => {
        req.body.password,
        process.env.SECRET_KEY
      ).toString(),
-     isAdmin: req.body.isAdmin,
+     isBusiness: req.body.isBusiness,
+     otp:req.body.otp
    });
    try {
      const user = await newUser.save();
