@@ -11,7 +11,6 @@ const register=async (req, res) => {
      email: req.body.email,
      phone:req.body.phone,
      otp:otp,
-     role:req.body.role,
      password: CryptoJS.AES.encrypt(
        req.body.password,
        process.env.SECRET_KEY
@@ -28,4 +27,17 @@ const register=async (req, res) => {
      res.status(500).json({ error: err.message });
    }
  }
- module.exports=register
+ const country=async(req,res)=>{
+const user=await User.findById({_id:req.params.id});
+     try {
+      if(!user) return res.status(404).json("NO Such User Found!");
+      const country=req.body.country
+      updatedUser=await User.findByIdAndUpdate({_id:req.params.id},{$set:{country:country}})
+      const {password,...info}=updatedUser._doc;
+      console.log(updatedUser);
+      res.status(201).json(info);
+     } catch (error) {
+      res.status(500).json({ error: err.message });
+    }
+ }
+ module.exports={register,country}

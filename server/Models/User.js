@@ -2,19 +2,19 @@ const mongoose = require("mongoose");
 const UserSchema = new mongoose.Schema(
   {
     name: { type: String, required: true, unique: true },
-    phone: {
-      type: String,
+    // phone: {
+    //   type: String,
 
-      maxLength: [10, "Max length should be 10"],
-      validate: {
-        validator: function (v) {
-          var re = /^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$/;
-          return !v || !v.trim().length || re.test(v);
-        },
-        message: "Provided phone number is invalid.",
-      },
-    },
-    country:{type: String, required: true},
+    //   maxLength: [10, "Max length should be 10"],
+    //   validate: {
+    //     validator: function (v) {
+    //       var re = /^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$/;
+    //       return !v || !v.trim().length || re.test(v);
+    //     },
+    //     message: "Provided phone number is invalid.",
+    //   },
+    // },
+    country:{type: String},
     password: { type: String, required: true },
     isBusiness: { type: Boolean, default: false },
     email: {

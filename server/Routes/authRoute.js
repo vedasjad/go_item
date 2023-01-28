@@ -1,7 +1,7 @@
 const router = require("express").Router();
 const jwt = require("jsonwebtoken");
 const CryptoJS = require("crypto-js");
-const register = require("../Controllers/register");
+const{ register,country} = require("../Controllers/register");
 const login = require("../Controllers/login");
 const Otp = require("../Models/Otp.js");
 const User = require("../Models/User.js");
@@ -10,6 +10,8 @@ const otpgenerator = require("otp-generator");
 const verifyemail = require("../Controllers/verifyEmail");
 //REGISTER
 router.post("/register",register);
+//Add Country 
+router.put("/:id/addCountry",country);
 //LOGIN
 router.post("/login",login);
 //Verification through jwt
