@@ -6,6 +6,7 @@ const bodyParser = require("body-parser");
 const authRoute = require("./routes/authRoute");
 const cityRoutes = require("./routes/cityRoutes");
 const warehouseRoute = require("./routes/warehouseRoute");
+const countryRoute = require("./routes/countryRoutes");
 mongoose.set("strictQuery", true);
 require("dotenv").config();
 const app = express();
@@ -23,6 +24,7 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use("/api/auth", authRoute);
 app.use("/api/country", cityRoutes);
 app.use("/api/business",warehouseRoute);
+app.use("/api",countryRoute);
 app.listen(PORT, () => {
   console.log(`Server running at ${PORT}`);
 });
